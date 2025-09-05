@@ -46,49 +46,5 @@ I built this because I love cybersecurity from a programming perspective. While 
 
 I hope security professionals will use these scripts, provide feedback on their strengths and weaknesses, and help me iterate toward increasingly useful tools. Thank you for taking the time to explore this project—I hope it proves valuable in your security work!
 
-## Development Status
-This project is currently in active development. Here's the current progress:
-
-### ✅ Completed
-- [x] Project planning and architecture design
-- [x] README documentation and project structure
-- [x] Category naming convention (`erq-` prefix)
-
-### 🚧 In Progress
-- [ ] Discovery phase scripts (`erq-discovery`)
-  - [ ] Host discovery scripts
-  - [ ] Service enumeration scripts
-  - [ ] Port scanning automation
-- [ ] Vulnerability assessment scripts (`erq-vuln`)
-  - [ ] Common vulnerability checks
-  - [ ] Service-specific vulnerability scripts
-  - [ ] CVE-based scanning scripts
-
-### 📋 Planned
-- [ ] Exploitation scripts (`erq-exploit`)
-  - [ ] Common exploit attempts
-  - [ ] Service-specific exploits
-  - [ ] Payload delivery scripts
-- [ ] Authentication testing scripts (`erq-auth`)
-  - [ ] Brute force automation
-  - [ ] Default credential checks
-  - [ ] Authentication bypass tests
-- [ ] Intelligent reporting system
-  - [ ] Report parsing engine
-  - [ ] Integrity rating system
-  - [ ] Next-step recommendations
-- [ ] Documentation and examples
-  - [ ] Individual script documentation
-  - [ ] Usage examples and tutorials
-  - [ ] Best practices guide
-
-### 🎯 Future Enhancements
-- [ ] Integration with other security tools
-- [ ] Custom output formats (JSON, XML, etc.)
-- [ ] Automated report generation improvements
-- [ ] Performance optimizations
-
-*Last updated: September 2025*
-
 ## Contributing
-Feedback, bug reports, and suggestions are always welcome. This project grows stronger through community input and real-world testing. Since this is an active development project, early feedback on the approach and planned features is especially valuable!
+Feedback, bug reports, and suggestions are always welcome. This project grows stronger through community input and real-world testing.
