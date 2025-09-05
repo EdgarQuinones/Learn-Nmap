@@ -1,12 +1,4 @@
-### Categories 
-**Available Categories:**
-- `erq-discovery` - Host and service discovery
-- `erq-vuln` - Vulnerability identification  
-- `erq-exploit` - Exploitation attempts
-- `erq-auth` - Authentication testing
-- `erq-all` - Run all scripts (⚠️ **Warning**: Lengthy execution time, generates multiple files, may have unexpected interactions)
-
-*Note: The "erq" prefix prevents conflicts with existing Nmap categories.*# nmap-pentest-scripts
+# nmap-pentest-scripts
 Custom Nmap NSE scripts designed to streamline penetration testing workflows with intelligent reporting.
 
 ## Main Idea
@@ -73,13 +65,11 @@ This project is currently in active development. Here's the current progress:
   - [ ] CVE-based scanning scripts
 
 ### 📋 Planned
-- [x] Exploitation scripts (`erq-exploit`)
-  - [x] Basic exploitation script template (`ExploitBasics.nse`)
+- [ ] Exploitation scripts (`erq-exploit`)
   - [ ] Common exploit attempts
   - [ ] Service-specific exploits
   - [ ] Payload delivery scripts
-- [x] Authentication testing scripts (`erq-auth`)
-  - [x] Basic authentication script template (`AuthBasics.nse`)
+- [ ] Authentication testing scripts (`erq-auth`)
   - [ ] Brute force automation
   - [ ] Default credential checks
   - [ ] Authentication bypass tests
