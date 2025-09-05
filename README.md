@@ -1,15 +1,4 @@
-### Available Categories
-**Core Categories:**
-- `erq-discovery` - Host and service discovery
-- `erq-vuln` - Vulnerability identification  
-- `erq-exploit` - Exploitation attempts
-- `erq-auth` - Authentication testing
-- `erq-all` - Run all scripts (⚠️ **Warning**: Lengthy execution time, generates multiple files, may have unexpected interactions)
-
-**Educational Categories:**
-- `erq-basics` - Learning and template scripts
-
-*Note: The "erq" prefix prevents conflicts with existing Nmap categories. All scripts also include standard Nmap categories (discovery, vuln, exploit, auth) for compatibility.*### Categories 
+### Categories 
 **Available Categories:**
 - `erq-discovery` - Host and service discovery
 - `erq-vuln` - Vulnerability identification  
