@@ -13,11 +13,11 @@ I tried to keep it as straightforward as possible to use these scripts. While yo
 For scanning hosts, use the following format:
 
 `nmap --script <CATEGORY> host`
-- erq-discovery
-- erq-vuln
-- erq-exploit
-- erq-auth
-- erq-all (If you wanted to run all the scripts in this repo at once, please note this will take a while, make a lot of files, and may not work as intended)
+- `erq-discovery`
+- `erq-vuln`
+- `erq-exploit`
+- `erq-auth`
+- `erq-all` (If you wanted to run all the scripts in this repo at once, please note this will take a while, make a lot of files, and may not work as intended)
 
 _Note: erq is being used for the front to not overwrite any nmap categories._
 ### Reports
