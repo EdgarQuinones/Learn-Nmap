@@ -17,7 +17,7 @@ For scanning hosts, use the following format:
 - erq-vuln
 - erq-exploit
 - erq-auth
-
+- erq-all (If you wanted to run all the scripts in this repo at once, please note this will take a while, make a lot of files, and may not work as intended)
 _Note: erq is being used for the front to not overwrite any nmap categories._
 ### Reports
 I wanted to make this differnet from simply scanning nmaps for you, since if that was it, you wouldn't need to use this. I am sure nmap has their own reporting options, but I am also using this as a learning experience, so hopfully I still provide useful information. 
