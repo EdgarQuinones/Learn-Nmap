@@ -1,4 +1,4 @@
-# NmapNSE-scripts
+# nmap-pentest-scripts
 Custom Nmap NSE scripts designed to streamline penetration testing workflows with intelligent reporting.
 
 ## Main Idea
