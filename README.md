@@ -1,32 +1,50 @@
 # NmapNSE-scripts
-Scripts using Nmap NSE to more easily use it.
+Custom Nmap NSE scripts designed to streamline penetration testing workflows with intelligent reporting.
 
-## Main idea
-- Scripts for the 4 steps of attack (Discovery, Vulnerabilities, Exploiting, and Authentication)
-- Using custom categories so users can only run these scripts 
-- Simple enough to understand, but complex enough to be useful 
-- Auto transfer important info info a separate file (Might make a bash script specifically for this)
-- Give the users control to be specific for different expertise levels of users. 
-## How to use
-I tried to keep it as straightforward as possible to use these scripts. While you can call specific scripts, I added a category to each type, that way you can call all scripts of a specific category without finding them all. This is seperate from the nmap default categories, but those are added too for advance users.
+## Main Idea
+- **Four-phase attack methodology**: Scripts organized around Discovery, Vulnerabilities, Exploitation, and Authentication
+- **Custom categories**: Run targeted script collections without hunting through individual files
+- **Balanced complexity**: Simple enough for beginners to understand, sophisticated enough to be genuinely useful
+- **Intelligent reporting**: Auto-extract and analyze key findings into separate report files
+- **Flexible expertise levels**: Granular control allowing users to operate at their comfort level
+
+## How to Use
+I designed these scripts to be as straightforward as possible. While you can call individual scripts, I've created categories for each phase so you can run entire collections without tracking down each script manually. These categories are separate from Nmap's default categories (though those are preserved for advanced users).
+
 ### Categories 
-For scanning hosts, use the following format:
+To scan hosts, use this format:
 
-`nmap --script <CATEGORY> host`
-- `erq-discovery`
-- `erq-vuln`
-- `erq-exploit`
-- `erq-auth`
-- `erq-all` (If you wanted to run all the scripts in this repo at once, please note this will take a while, makes a lot of files, and may not work as intended)
+```bash
+nmap --script <CATEGORY> <target>
+```
 
-_Note: erq is being used for the front to not overwrite any nmap categories._
+**Available Categories:**
+- `erq-discovery` - Host and service discovery
+- `erq-vuln` - Vulnerability identification  
+- `erq-exploit` - Exploitation attempts
+- `erq-auth` - Authentication testing
+- `erq-all` - Run all scripts (⚠️ **Warning**: Lengthy execution time, generates multiple files, may have unexpected interactions)
+
+*Note: The "erq" prefix prevents conflicts with existing Nmap categories.*
+
 ### Reports
-I wanted to make this differnet from simply scanning nmaps for you, since if that was it, you wouldn't need to use this. I am sure nmap has their own reporting options, but I am also using this as a learning experience, so hopfully I still provide useful information. 
+What sets this apart from standard Nmap scanning is the intelligent reporting system. Rather than simply duplicating Nmap's output, these scripts:
 
-Whenever any script is executed, a report is always made. The script will NOT be a copy and paste of the nmap report. It will take the report, parse the important portions, and give some form of integrity rating to see potential next directions. 
+- **Parse and prioritize** the most critical findings
+- **Provide actionable insights** with integrity ratings
+- **Suggest next steps** based on discovered information
+- **Tailor recommendations** to the specific category:
+  - **Discovery**: Highlights promising services for deeper investigation
+  - **Vulnerabilities**: Identifies security gaps and suggests exploitation tools
+  - **Exploitation**: Documents successful attacks and potential C2 channels
+  - **Authentication**: Maps credential weaknesses and bypass opportunities
 
-The reports are quite differnet based on the category, for example, discovery will be discussing more about possible services to look into, while vuln will be finding issues, and recommending other tools to try and get C2.
-## Notes
-I did this because I love cyber, but from a programming perspective. I am not a fan of doing the actual pen testing, because to be honest, I'm not the best under pressure. I like time to plan and come up with ideas. I like to support a team anyway I can, and so if I can makes scripts that are flexiable enough that they help even a little, I'll be happy. 
+Every script execution automatically generates a focused report designed to guide your next moves.
 
-I hope they can use these scripts this year, tell me the pros and cons, and I can slowly improve them little by little. Thank you for taking the time to read this. I hope these scripts benefit you!
+## Project Philosophy
+I built this because I love cybersecurity from a programming perspective. While I'm not the strongest under pressure during live penetration tests, I excel at methodical planning and tool development. My goal is to support security teams by creating flexible, helpful automation that enhances their capabilities.
+
+I hope security professionals will use these scripts, provide feedback on their strengths and weaknesses, and help me iterate toward increasingly useful tools. Thank you for taking the time to explore this project—I hope it proves valuable in your security work!
+
+## Contributing
+Feedback, bug reports, and suggestions are always welcome. This project grows stronger through community input and real-world testing.
