@@ -12,7 +12,7 @@ Custom Nmap NSE scripts designed to streamline penetration testing workflows wit
 I designed these scripts to be as straightforward as possible. While you can call individual scripts, I've created categories for each phase so you can run entire collections without tracking down each script manually. These categories are separate from Nmap's default categories (though those are preserved for advanced users).
 
 ### Categories 
-To scan hosts, use this format:
+To scan hosts, use this format, along with any other flags you tend to use on Nmap:
 
 ```bash
 nmap --script <CATEGORY> <target>
