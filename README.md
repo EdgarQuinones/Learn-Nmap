@@ -12,6 +12,7 @@ Scripts using Nmap NSE to more easily use it.
 I tried to keep it as straight forward as possible to use these scripts. While you can call specific scripts, I added a category to each type, that way you can call all scripts of a specific category without finding them all. This is seperate from the nmap default categories, but those are added too for advance users.
 
 For scanning hosts, use the following format:
+
 `nmap --script <CATEGORY> host`
 - erq-discovery
 - erq-vuln
