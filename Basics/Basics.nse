@@ -3,7 +3,7 @@ description = "My first script"
 
 -- If someone wants to run all the scripts of a specific
 -- category, they do --script discovery
-categories = {"discovery"}
+categories = {"basics", "erq-basics"}
 
 -- One of the possible nmap default functions you
 -- must use if you want to use a nmap script.
