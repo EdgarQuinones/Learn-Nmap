@@ -20,7 +20,7 @@ For scanning hosts, use the following format:
 ### Reports
 I wanted to make this differnet from simply scanning nmaps for you, since if that was it, you wouldn't need to use this. I am sure nmap has their own reporting options, but I am also using this as a learning experience, so hopfully I still provide useful information. 
 
-Whenever any script is executed, a report is always made. The script will NOT be a copy and paste of the nmap report. It will take the report, parse the important portions, and get an integrity rating to see potential next directions. 
+Whenever any script is executed, a report is always made. The script will NOT be a copy and paste of the nmap report. It will take the report, parse the important portions, and give some form of integrity rating to see potential next directions. 
 
 The reports are quite differnet based on the category, for example, discovery will be discussing more about possible services to look into, while vuln will be finding issues, and recommending other tools to try and get C2.
 ## Notes
