@@ -8,7 +8,7 @@ Scripts using Nmap NSE to more easily use it.
 - Auto transfer important info info a separate file (Might make a bash script specifically for this)
 - Give the users control to be specific for different expertise levels of users. 
 ## How to use
-I tried to keep it as straight forward as possible to use these scripts. While you can call specific scripts, I added a category to each type, that way you can call all scripts of a specific category without finding them all. This is seperate from the nmap default categories, but those are added too for advance users.
+I tried to keep it as straightforward as possible to use these scripts. While you can call specific scripts, I added a category to each type, that way you can call all scripts of a specific category without finding them all. This is seperate from the nmap default categories, but those are added too for advance users.
 ### Categories 
 For scanning hosts, use the following format:
 
@@ -18,12 +18,12 @@ For scanning hosts, use the following format:
 - erq-exploit
 - erq-auth
 ### Reports
-I wanted to make this differnet from simply scanning nmaps for you, since if that was it, you wouldn't need to use this. I am sure nmap has their own reporting options, but I am also using this as a learning experience so hopfully I still provide useful information. 
+I wanted to make this differnet from simply scanning nmaps for you, since if that was it, you wouldn't need to use this. I am sure nmap has their own reporting options, but I am also using this as a learning experience, so hopfully I still provide useful information. 
 
-Whenever any script is made, a report is always made. The script will NOT be a copy and paste of the nmap report. It will take the report, parse the important portions, and get a integrity rating to see potention next directions. 
+Whenever any script is executed, a report is always made. The script will NOT be a copy and paste of the nmap report. It will take the report, parse the important portions, and get an integrity rating to see potential next directions. 
 
-The reports are quite differnet based on the category, for example discovery will be discussing more about possible services to look into, while vuln will be finding issues, and recemending other tools to try and get c2.
+The reports are quite differnet based on the category, for example, discovery will be discussing more about possible services to look into, while vuln will be finding issues, and recommending other tools to try and get C2.
 ## Notes
-I did this because I love cyber, but from a programming perspective. I am not a fan of doing the actual pen testing, because to be hounest, im not the best underpressure. I like time to plan and come up with ideas. I like to support a team anyway I can, and so if I can makes scripts that are flexiable enough that they help even a little, I'll be happy. 
+I did this because I love cyber, but from a programming perspective. I am not a fan of doing the actual pen testing, because to be honest, I'm not the best under pressure. I like time to plan and come up with ideas. I like to support a team anyway I can, and so if I can makes scripts that are flexiable enough that they help even a little, I'll be happy. 
 
-I hope they can use these scripts this year, tell me the pros and cons, and I can slowly improve them little by little. Thank you for taking time to read this, I hope these scripts benifit you!
+I hope they can use these scripts this year, tell me the pros and cons, and I can slowly improve them little by little. Thank you for taking the time to read this. I hope these scripts benefit you!
