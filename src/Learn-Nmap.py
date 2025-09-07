@@ -168,17 +168,13 @@ intro = (
 if len(sys.argv) == 2:
     print(intro)
     target = sys.argv[1]
-elif len(sys.argv) > 2:
+else:
     print("="*60)
     print(f"{RED}ERROR: Invalid arguments!{RESET}")
     print("Usage:")
     print("  Learn-Nmap.py <Host or Network>")
-    print("  Learn-Nmap.py  (no arguments)")
     print("="*60)
     sys.exit(1)
-else:
-    print(intro)
-    target = input("Enter target (IP/Network): ")
 
 print("\nScanning...\n")
 
