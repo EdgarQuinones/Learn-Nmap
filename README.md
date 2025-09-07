@@ -1,24 +1,33 @@
-# Learn Nmap
+# Learn-Nmap
 
-A Python tool that leverages AI to make **Nmap scans smarter and more efficient**, generating detailed, actionable reports that explain findings and suggest next steps.
-
----
-
-## 🚀 Features
-
-* **Target Input:** Enter a host, IP range, or network.
-* **Automated Nmap Scan:** Detects open ports and running services.
-* **AI-Powered Analysis:** Uses Ollama + `llama3.1:8b` to analyze results.
-* **Progressive Recommendations:** For each service, the AI suggests Nmap commands at 4 intrusion levels (safe → exhaustive).
-* **Actionable Reporting:** Saves results to `report.md` with summary, recommended scripts, and follow-up tips.
+**Learn-Nmap** is a Python tool that integrates **Nmap** with **AI-powered analysis**, making scans more efficient and generating actionable reports with recommended next steps.
 
 ---
 
-## 🛠️ Installation
+## Features
+
+* **Flexible Target Input**
+  Accepts a host, IP range, or network.
+
+* **Automated Nmap Scans**
+  Detects live hosts, open ports, and running services.
+
+* **AI-Powered Analysis**
+  Uses Ollama with the `llama3.1:8b` model to interpret scan results.
+
+* **Progressive Recommendations**
+  Suggests Nmap commands at four levels of intrusion (from safe to exhaustive).
+
+* **Actionable Reporting**
+  Saves results to `report.md`, including summaries, recommended scripts, and follow-up tips.
+
+---
+
+## Installation
 
 ### Linux
 
-1. Clone the repo and move into the folder:
+1. Clone the repository and enter the directory:
 
    ```bash
    git clone <repo-url>
@@ -33,32 +42,32 @@ A Python tool that leverages AI to make **Nmap scans smarter and more efficient*
 
 ### Windows
 
-* **Batch Script:**
+* **Batch Script**
 
-  1. Save as `setup.bat`
-  2. Right-click → *Run as Administrator*
+  1. Save the script as `setup.bat`.
+  2. Right-click and select *Run as Administrator*.
 
-* **PowerShell:**
+* **PowerShell**
 
-  1. Save as `setup.ps1`
-  2. Open PowerShell as Administrator
+  1. Save the script as `setup.ps1`.
+  2. Open PowerShell as Administrator.
   3. Run:
 
      ```powershell
      Set-ExecutionPolicy Bypass -Scope Process -Force; .\setup.ps1
      ```
 
-✅ These scripts will:
+These scripts will:
 
 * Install **Nmap**
 * Install **Ollama**
 * Start the Ollama service
-* Download the **llama3.1:8b** model (\~4.7GB)
-* Prepare everything to run `Learn-Nmap.py`
+* Download the **llama3.1:8b** model (\~4.7 GB)
+* Prepare the environment to run `Learn-Nmap.py`
 
 ---
 
-## ▶️ Usage
+## Usage
 
 ### Run a Scan
 
@@ -73,16 +82,17 @@ python3 Learn-Nmap.py 192.168.1.10
 python3 Learn-Nmap.py 192.168.1.0/24
 ```
 
-* If no argument is given, you will be prompted to enter a target.
-* After scanning, the script will:
+If no target is specified, the program will prompt for one interactively.
 
-  * Run **Nmap** and save raw results.
-  * Use **AI** to generate a structured report (`report.md`).
-  * Print a color-coded summary in the terminal.
+After execution, the script will:
+
+* Run **Nmap** and save raw results.
+* Use **AI** to generate a structured report (`report.md`).
+* Print a color-coded summary to the terminal.
 
 ---
 
-## 📄 Output Example
+## Example Output
 
 ```
 Summary of Findings:
@@ -108,16 +118,16 @@ Tips for Next Scans:
 
 ---
 
-## 💡 Project Philosophy
+## Project Philosophy
 
-This project was built to bridge **manual scanning** and **automated analysis**.
-Instead of just running Nmap, security teams get **AI-powered recommendations** tailored to each service.
+**Learn-Nmap** bridges the gap between manual scanning and automated analysis.
+Rather than only running Nmap, it provides **AI-driven recommendations** tailored to each detected service.
 
-The goal is to reduce repetitive tasks and help penetration testers focus on what matters: **interpreting results and taking action**.
+The objective is to minimize repetitive tasks and enable penetration testers to focus on interpreting results and taking action.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, ideas, and bug reports are welcome.
-Please open an issue or submit a PR to help improve **Learn-Nmap**.
+Please open an issue or submit a pull request to help improve **Learn-Nmap**.
