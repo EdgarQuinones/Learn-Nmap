@@ -1,64 +1,133 @@
+Got it ✅ I’ll rewrite your **README** so it clearly explains **how to install, run, and use your Learn-Nmap tool**, while keeping it clean and beginner-friendly. I’ll also make sure it highlights that the script **automates Nmap, uses AI (Ollama), and generates a full report with recommendations**.
+
+Here’s the improved README:
+
+---
+
 # Learn Nmap
 
-A script that leverages AI to make Nmap more efficient, generating detailed reports that explain its findings.
+A Python tool that leverages AI to make **Nmap scans smarter and more efficient**, generating detailed, actionable reports that explain findings and suggest next steps.
 
 ---
 
-## 🚀 Main Features
+## 🚀 Features
 
-- **User Input:** Specify host/network and intrusion level (1-4)
-- **Automated Scanning:** Detects open ports and services
-- **Targeted Scripts:** Runs service-specific Nmap scripts
-- **Reporting:** Produces actionable reports with next steps
+* **Target Input:** Enter a host, IP range, or network.
+* **Automated Nmap Scan:** Detects open ports and running services.
+* **AI-Powered Analysis:** Uses Ollama + `llama3.1:8b` to analyze results.
+* **Progressive Recommendations:** For each service, the AI suggests Nmap commands at 4 intrusion levels (safe → exhaustive).
+* **Actionable Reporting:** Saves results to `report.md` with summary, recommended scripts, and follow-up tips.
 
 ---
 
-## 🛠️ Usage Instructions
+## 🛠️ Installation
 
 ### Linux
 
-1. Save the script as `setup.sh`
-2. Make it executable:
-    ```bash
-    chmod +x setup.sh
-    ```
-3. Run the script:
-    ```bash
-    ./setup.sh
-    ```
+1. Clone the repo and move into the folder:
+
+   ```bash
+   git clone <repo-url>
+   cd learn-nmap
+   ```
+2. Run the setup script:
+
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
 
 ### Windows
 
-- **Batch Script:**
-  1. Save as `setup.bat`
-  2. Right-click and select "Run as Administrator"
+* **Batch Script:**
 
-- **PowerShell:**
+  1. Save as `setup.bat`
+  2. Right-click → *Run as Administrator*
+
+* **PowerShell:**
+
   1. Save as `setup.ps1`
   2. Open PowerShell as Administrator
   3. Run:
-      ```powershell
-      Set-ExecutionPolicy Bypass -Scope Process -Force; .\setup.ps1
-      ```
 
-**These scripts will:**
-- Install Nmap
-- Install Ollama
-- Start the Ollama service
-- Download the `llama3.1:8b` model (~4.7GB)
-- Set up everything needed to run `Learn-Nmap.py`
+     ```powershell
+     Set-ExecutionPolicy Bypass -Scope Process -Force; .\setup.ps1
+     ```
+
+✅ These scripts will:
+
+* Install **Nmap**
+* Install **Ollama**
+* Start the Ollama service
+* Download the **llama3.1:8b** model (\~4.7GB)
+* Prepare everything to run `Learn-Nmap.py`
+
+---
+
+## ▶️ Usage
+
+### Run a Scan
+
+```bash
+python3 Learn-Nmap.py <target>
+```
+
+Examples:
+
+```bash
+python3 Learn-Nmap.py 192.168.1.10
+python3 Learn-Nmap.py 192.168.1.0/24
+```
+
+* If no argument is given, you will be prompted to enter a target.
+* After scanning, the script will:
+
+  * Run **Nmap** and save raw results.
+  * Use **AI** to generate a structured report (`report.md`).
+  * Print a color-coded summary in the terminal.
+
+---
+
+## 📄 Output Example
+
+```
+Summary of Findings:
+- Host: 192.168.1.10
+- Open ports and associated services:
+  - 22/tcp: SSH
+  - 80/tcp: HTTP
+  - 443/tcp: HTTPS
+  - 139/tcp: SMB
+  - 3306/tcp: MySQL
+
+Service-Specific Recommendations:
+Service: SSH on port 22
+- Level 1: nmap -p 22 192.168.1.10 — Basic port check
+- Level 2: nmap -sV -p 22 192.168.1.10 — Version detection
+- Level 3: nmap -sV --script=ssh-hostkey,ssh-auth-methods -p 22 192.168.1.10
+- Level 4: nmap -sV --script=ssh-brute,ssh-hostkey,ssh-auth-methods -p 22 192.168.1.10
+
+Tips for Next Scans:
+- Use `-oA` to save output in all formats.
+- Increase `-T` speed carefully based on stability.
+```
 
 ---
 
 ## 💡 Project Philosophy
 
-I created this project out of a passion for cybersecurity and programming. While live penetration testing can be stressful, I thrive in methodical planning and tool development. My aim is to empower security teams with flexible automation that enhances their capabilities.
+This project was built to bridge **manual scanning** and **automated analysis**.
+Instead of just running Nmap, security teams get **AI-powered recommendations** tailored to each service.
 
-I welcome feedback from security professionals to improve these scripts. Your insights help make this tool more useful for real-world security work. Thank you for exploring this project—I hope it adds value to your workflow!
+The goal is to reduce repetitive tasks and help penetration testers focus on what matters: **interpreting results and taking action**.
 
 ---
 
 ## 🤝 Contributing
 
-Feedback, bug reports, and suggestions are always appreciated. Community input and real-world testing make this project stronger!
+Contributions, ideas, and bug reports are welcome.
+Please open an issue or submit a PR to help improve **Learn-Nmap**.
 
+---
+
+👉 Do you want me to also add a **"Quick Workflow" diagram** (like ASCII art or markdown flow) to make it visually clear: `Input → Nmap → AI → Report`? That could make the README stand out.

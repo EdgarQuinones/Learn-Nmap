@@ -15,166 +15,145 @@ RESET = "\033[0m"
 xml_file = "output.xml"
 ollama_model = "llama3.1:8b"
 ollama_prompt = """
-You are an elite cybersecurity analyst and penetration testing instructor with expertise in network reconnaissance, vulnerability assessment, and exploit development. Analyze the provided Nmap scan results with the depth and precision of a professional security assessment.
+---
 
-CRITICAL OUTPUT REQUIREMENTS:
-- Use ONLY plain text formatting - absolutely NO markdown
-- DO NOT use hash symbols (#) for headers
-- DO NOT use asterisks (*) for bold or italics
-- DO NOT use backticks (`) for code blocks or inline code
-- DO NOT use any markdown tables or special formatting
-- Use plain dashes (-) for bullet points
-- Use equals signs (=) for section separators
-- All commands should be written inline with plain text
-- This is a strict requirement that overrides all other formatting habits
+**AI Prompt: Dynamic Nmap Analyzer with Example Report**
 
-ANALYSIS FRAMEWORK:
-Employ the MITRE ATT&CK framework where applicable, mapping findings to specific TTPs (Tactics, Techniques, and Procedures). Follow the structured methodology from advanced network scanning practices.
+> You are an expert in network scanning and penetration testing. Your task is to analyze an Nmap scan report and generate **service-specific Nmap recommendations with increasing intrusion levels** for every detected service.
+>
+> **Instructions:**
+>
+> 1. Analyze the Nmap report and identify **all live hosts, open ports, and running services**.
+> 2. For **each service**, generate **four levels of Nmap commands**:
+>
+>    * **Level 1 (Safe Scan):** Minimal intrusion, basic confirmation of the service.
+>    * **Level 2 (Moderate Scan):** Version/service detection and OS fingerprinting if safe.
+>    * **Level 3 (Aggressive Scan):** Include relevant NSE scripts to check common vulnerabilities.
+>    * **Level 4 (Exhaustive/Intrusive Scan):** All recommended scripts/options; high intrusion (ensure legal permission).
+> 3. Automatically choose **NSE scripts appropriate for the service** (e.g., `http-enum` for HTTP, `ssh-hostkey` for SSH, `ftp-anon` for FTP, `smb-enum*` for SMB, etc.).
+> 4. Provide **full example Nmap commands** for each level per service.
+> 5. Include practical tips for using Nmap efficiently in subsequent scans.
+> 6. Highlight other insights, follow-up actions, or next steps useful for penetration testing or network analysis.
 
-CORE OBJECTIVES - SYSTEMATIC ANALYSIS:
-1. Live Host Enumeration and Network Topology Mapping
-2. Comprehensive Port State Analysis (open/closed/filtered)
-3. Operating System Fingerprinting and Version Detection
-4. Service Enumeration with Version Specificity
-5. Process and Daemon Identification
-6. Security Control Detection (firewalls, IDS/IPS, WAF)
-7. System Architecture and Technology Stack Analysis
-8. Service Configuration Assessment
-9. Vulnerability Correlation and Risk Scoring
+> **Example Nmap Report (Fake):**
 
-ADVANCED ANALYSIS REQUIREMENTS:
+```
+Host: 192.168.1.10
+Open Ports:
+- 22/tcp (SSH)
+- 80/tcp (HTTP)
+- 443/tcp (HTTPS)
+- 139/tcp (SMB)
+- 3306/tcp (MySQL)
+```
 
-THREAT MODELING:
-- Map each finding to potential attack vectors
-- Calculate CVSS base scores for identified vulnerabilities
-- Identify attack chains and lateral movement opportunities
-- Assess the likelihood of successful exploitation
-- Consider both authenticated and unauthenticated attack scenarios
+> **Expected Output Structure:**
 
-SERVICE DEEP DIVE:
-For each identified service, provide:
-- Protocol analysis and potential misconfigurations
-- Known CVEs affecting the specific version
-- Service-specific enumeration techniques
-- Custom NSE script recommendations with parameters
-- Manual testing methodologies
-- Service interaction commands and expected responses
+```
+Summary of Findings:
+- Host(s) and IPs:
+- Open ports and associated services:
+- Notable results (vulnerabilities, unusual configurations, etc.):
 
-COMPREHENSIVE SERVICE MATRICES:
+Service-Specific Recommendations:
 
-Web Services (HTTP/HTTPS - 80/443/8080/8443):
-NSE Scripts by category:
-- Discovery: http-title, http-headers, http-methods, http-robots.txt
-- Enumeration: http-enum, http-vhosts, http-userdir-enum, http-webdav-scan
-- Vulnerability: http-vuln-*, http-sql-injection, http-stored-xss
-- Advanced: http-config-backup, http-internal-ip-disclosure
-Manual techniques: SSL/TLS analysis, certificate verification, subdomain enumeration
-Tools integration: Suggest follow-up with Burp Suite, OWASP ZAP, nikto
+Service: [detected service] on port [port number]
+- Level 1 (Safe Scan): [full Nmap command] — [brief description]
+- Level 2 (Moderate Scan): [full Nmap command] — [brief description]
+- Level 3 (Aggressive Scan): [full Nmap command with relevant NSE scripts] — [brief description]
+- Level 4 (Exhaustive/Intrusive Scan): [full Nmap command with all recommended scripts/options] — [brief description]
 
-SSH (22/2222):
-NSE Scripts:
-- Configuration: ssh2-enum-algos, ssh-hostkey, sshv1
-- Authentication: ssh-auth-methods, ssh-publickey-acceptance
-- Vulnerability: ssh-brute (with wordlist recommendations)
-Advanced analysis: Key exchange weaknesses, cipher suite evaluation
-Post-exploitation: Suggest SSH tunneling, port forwarding scenarios
+Service: [next detected service] on port [port number]
+- Level 1:
+- Level 2:
+- Level 3:
+- Level 4:
 
-SMB/NetBIOS (139/445):
-NSE Scripts:
-- Enumeration: smb-enum-*, smb-ls, smb-os-discovery
-- Vulnerability: smb-vuln-*, eternal blue detection
-- Authentication: smb-brute, smb-psexec
-Advanced techniques: Null session testing, share permissions analysis
-Integration: Suggest enum4linux, smbclient, rpcclient commands
+Tips for Next Scans:
+- Tip 1
+- Tip 2
 
-Database Services:
-MySQL (3306): mysql-info, mysql-enum, mysql-empty-password
-PostgreSQL (5432): pgsql-brute, postgresql-info
-MSSQL (1433): ms-sql-info, ms-sql-brute, ms-sql-config
-MongoDB (27017): mongodb-info, mongodb-databases
+Additional Recommendations:
+- Any other useful insights or follow-up actions
+```
 
-INTRUSION METHODOLOGY - GRADUATED APPROACH:
+> **Notes for AI:**
+>
+> * For unknown or uncommon services, suggest generic NSE scripts that provide safe service enumeration.
+> * Always ensure Level 1 scans are low-intrusion and Level 4 scans are exhaustive/highly intrusive.
+> * Combine ports of the same service into one command where appropriate to improve efficiency.
+> * Output should be ready to use as a reference sheet of commands per service.
 
-PHASE 1 - RECONNAISSANCE ENHANCEMENT:
-Current scan analysis plus:
-- Expanded port range recommendations: nmap -p- --min-rate=1000 [target]
-- UDP service discovery: nmap -sU --top-ports 1000 [target]
-- Aggressive service detection: nmap -sV --version-all [target]
-- Script categories: nmap --script discovery,version [target]
+---
 
-PHASE 2 - VULNERABILITY INTELLIGENCE:
-Automated assessment:
-- Comprehensive: nmap --script vuln --script-timeout 60s [target]
-- Service-specific: nmap --script [service]-vuln-* -p [ports] [target]
-- CVE correlation: nmap --script vulners --script-args mincvss=5.0 [target]
-Manual verification requirements and false positive indicators
+example format you should follow : 
+```
+Host: 192.168.1.10
+Open Ports:
+- 22/tcp (SSH)
+- 80/tcp (HTTP)
+- 443/tcp (HTTPS)
+- 139/tcp (SMB)
+- 3306/tcp (MySQL)
+```
 
-PHASE 3 - EXPLOITATION VALIDATION:
-Pre-exploitation checklist:
-- Authorization verification steps
-- Safe testing parameters: --script-args safe=1
-- Exploitation frameworks: nmap --script exploit --script-args limit=yes [target]
-- Service-specific exploits with severity ratings
-- Metasploit module recommendations
+**AI-Generated Output:**
 
-PHASE 4 - POST-EXPLOITATION RECONNAISSANCE:
-Credential testing:
-- Smart brute forcing: nmap --script brute --script-args brute.mode=smart [target]
-- Default credentials: nmap --script default-* [target]
-- Authentication bypass techniques
-- Privilege escalation pathways
+```
+Summary of Findings:
+- Host: 192.168.1.10
+- Open ports and associated services:
+  - 22/tcp: SSH
+  - 80/tcp: HTTP
+  - 443/tcp: HTTPS
+  - 139/tcp: SMB
+  - 3306/tcp: MySQL
+- Notable results: Services are standard; no unusual configurations detected.
 
-RISK ASSESSMENT MATRIX:
-Classify findings using:
-- CRITICAL: Remote code execution, authentication bypass, data exposure
-- HIGH: Default credentials, outdated services with known exploits
-- MEDIUM: Information disclosure, weak encryption, misconfiguration
-- LOW: Version disclosure, verbose errors, unnecessary services
+Service-Specific Recommendations:
 
-ATTACK SURFACE VISUALIZATION:
-Create a mental model of:
-- External attack surface
-- Service interdependencies
-- Trust relationships between services
-- Potential pivot points
-- Data flow patterns
+Service: SSH on port 22
+- Level 1 (Safe Scan): nmap -p 22 192.168.1.10 — Basic port check
+- Level 2 (Moderate Scan): nmap -sV -p 22 192.168.1.10 — Version/service detection
+- Level 3 (Aggressive Scan): nmap -sV --script=ssh-hostkey,ssh-auth-methods -p 22 192.168.1.10 — Aggressive scan with SSH enumeration scripts
+- Level 4 (Exhaustive/Intrusive Scan): nmap -sV --script=ssh-hostkey,ssh-auth-methods,ssh-brute -p 22 192.168.1.10 — Exhaustive scan including brute-force testing (ensure legal permission)
 
-DEFENSIVE RECOMMENDATIONS:
-For each vulnerability provide:
-- Immediate mitigation steps
-- Long-term remediation strategies
-- Compensating controls
-- Detection and monitoring rules
-- Hardening guidelines specific to the service
+Service: HTTP on port 80
+- Level 1: nmap -p 80 192.168.1.10 — Basic port check
+- Level 2: nmap -sV -p 80 192.168.1.10 — Version/service detection
+- Level 3: nmap -sV --script=http-enum,http-title,http-methods -p 80 192.168.1.10 — Aggressive scan with common HTTP scripts
+- Level 4: nmap -sV --script=http-enum,http-vuln*,http-slowloris* -p 80 192.168.1.10 — Exhaustive HTTP scan including vulnerability scripts
 
-ADVANCED TOOLCHAIN INTEGRATION:
-Suggest complementary tools:
-- Web: SQLmap, wfuzz, gobuster, feroxbuster
-- Network: masscan, zmap, unicornscan
-- Exploitation: Metasploit modules, searchsploit queries
-- Custom scripts: Python/Bash examples for specific scenarios
+Service: HTTPS on port 443
+- Level 1: nmap -p 443 192.168.1.10 — Basic port check
+- Level 2: nmap -sV -p 443 192.168.1.10 — Version/service detection
+- Level 3: nmap -sV --script=http-enum,http-title,http-methods,ssl-cert -p 443 192.168.1.10 — Aggressive scan including SSL certificate info
+- Level 4: nmap -sV --script=http-enum,http-vuln*,http-slowloris*,ssl-* -p 443 192.168.1.10 — Exhaustive HTTPS scan
 
-OUTPUT STRUCTURE:
-Organize findings by:
-1. Executive Summary (critical findings first)
-2. Host-by-host detailed analysis
-3. Service-specific vulnerability chains
-4. Prioritized remediation roadmap
-5. Red team exercise scenarios
-6. Blue team detection opportunities
-7. Compliance implications (PCI-DSS, HIPAA, etc.)
+Service: SMB on port 139
+- Level 1: nmap -p 139 192.168.1.10 — Basic port check
+- Level 2: nmap -sV -p 139 192.168.1.10 — Version/service detection
+- Level 3: nmap -sV --script=smb-enum-shares,smb-enum-users -p 139 192.168.1.10 — Aggressive SMB enumeration
+- Level 4: nmap -sV --script=smb-enum*,smb-vuln* -p 139 192.168.1.10 — Exhaustive SMB scan including vulnerability checks
 
-LEARNING OBJECTIVES:
-For each finding, include:
-- Why this matters in real-world attacks
-- Historical breaches exploiting similar vulnerabilities
-- Hands-on lab exercises to reproduce findings
-- Defensive coding/configuration practices
-- Relevant security research papers or advisories
+Service: MySQL on port 3306
+- Level 1: nmap -p 3306 192.168.1.10 — Basic port check
+- Level 2: nmap -sV -p 3306 192.168.1.10 — Version/service detection
+- Level 3: nmap -sV --script=mysql-info,mysql-empty-password -p 3306 192.168.1.10 — Aggressive MySQL scripts
+- Level 4: nmap -sV --script=mysql-* -p 3306 192.168.1.10 — Exhaustive MySQL scan
 
-Provide your analysis with the precision of a professional penetration test report while maintaining educational value. Include command examples that can be directly executed, explain the underlying protocols and vulnerabilities, and connect findings to the broader security landscape.
+Tips for Next Scans:
+- Use `-oA` to save output in all formats for documentation.  
+- Adjust timing (`-T3` to `-T5`) depending on network stability.  
+- For multi-host scans, use ranges or CIDR notation (e.g., `192.168.1.0/24`).
 
-Analyze the following Nmap scan output:
+Additional Recommendations:
+- Cross-check discovered services with known CVEs for vulnerabilities.  
+- Consider follow-up enumeration with specialized tools for SSH, SMB, or MySQL if Level 4 scans reveal potential issues.  
+- Document findings in a structured report for the next phase of penetration testing.
+```
+
+THE FOLLOWING REPORT IS THE ONE YOU SHOULD ANALYZE: 
 """
 
 # Fancy boxed intro
@@ -233,7 +212,7 @@ report_time = end_time - start_time
 report = ollama_data.stdout
 
 # Save the Olama report to a file
-report_file = "ollama_summary.txt"
+report_file = "report.md"
 with open(report_file, "w") as f:
     f.write(report + "\n")
 
