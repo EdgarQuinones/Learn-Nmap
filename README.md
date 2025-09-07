@@ -82,8 +82,6 @@ python3 Learn-Nmap.py 192.168.1.10
 python3 Learn-Nmap.py 192.168.1.0/24
 ```
 
-If no target is specified, the program will prompt for one interactively.
-
 After execution, the script will:
 
 * Run **Nmap** and save raw results.
