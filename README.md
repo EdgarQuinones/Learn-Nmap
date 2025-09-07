@@ -1,15 +1,64 @@
 # Learn Nmap
-Script that utilizes AI to make Nmap more efficient, and writes reports explaining its findings.
 
-## Main Idea
-- Takes user input (Host/network, and intrusion level (1-4))
-- Scans hosts for open ports/services
-- Runs specific scripts based on services found
-- Writes a report on its findings, and steps to take next
-## Project Philosophy
-I built this because I love cybersecurity from a programming perspective. While I'm not the strongest under pressure during live penetration tests, I excel at methodical planning and tool development. My goal is to support security teams by creating flexible, helpful automation that enhances their capabilities.
+A script that leverages AI to make Nmap more efficient, generating detailed reports that explain its findings.
 
-I hope security professionals will use these scripts, provide feedback on their strengths and weaknesses, and help me iterate toward increasingly useful tools. Thank you for taking the time to explore this project—I hope it proves valuable in your security work!
+---
 
-## Contributing
-Feedback, bug reports, and suggestions are always welcome. This project grows stronger through community input and real-world testing.
+## 🚀 Main Features
+
+- **User Input:** Specify host/network and intrusion level (1-4)
+- **Automated Scanning:** Detects open ports and services
+- **Targeted Scripts:** Runs service-specific Nmap scripts
+- **Reporting:** Produces actionable reports with next steps
+
+---
+
+## 🛠️ Usage Instructions
+
+### Linux
+
+1. Save the script as `setup.sh`
+2. Make it executable:
+    ```bash
+    chmod +x setup.sh
+    ```
+3. Run the script:
+    ```bash
+    ./setup.sh
+    ```
+
+### Windows
+
+- **Batch Script:**
+  1. Save as `setup.bat`
+  2. Right-click and select "Run as Administrator"
+
+- **PowerShell:**
+  1. Save as `setup.ps1`
+  2. Open PowerShell as Administrator
+  3. Run:
+      ```powershell
+      Set-ExecutionPolicy Bypass -Scope Process -Force; .\setup.ps1
+      ```
+
+**These scripts will:**
+- Install Nmap
+- Install Ollama
+- Start the Ollama service
+- Download the `llama3.1:8b` model (~4.7GB)
+- Set up everything needed to run `Learn-Nmap.py`
+
+---
+
+## 💡 Project Philosophy
+
+I created this project out of a passion for cybersecurity and programming. While live penetration testing can be stressful, I thrive in methodical planning and tool development. My aim is to empower security teams with flexible automation that enhances their capabilities.
+
+I welcome feedback from security professionals to improve these scripts. Your insights help make this tool more useful for real-world security work. Thank you for exploring this project—I hope it adds value to your workflow!
+
+---
+
+## 🤝 Contributing
+
+Feedback, bug reports, and suggestions are always appreciated. Community input and real-world testing make this project stronger!
+
