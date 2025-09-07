@@ -2,7 +2,7 @@
 Script that utilizes AI to make Nmap more efficient, and writes reports explaining its findings.
 
 ## Main Idea
-- Takes user input (Host/network, and intrusion level (1-4)
+- Takes user input (Host/network, and intrusion level (1-4))
 - Scans hosts for open ports/services
 - Runs specific scripts based on services found
 - Writes a report on its findings, and steps to take next

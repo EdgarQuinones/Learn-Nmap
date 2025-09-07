@@ -1,1 +1,0 @@
-categories = {"discovery", "erq-discovery", "erq-all"}

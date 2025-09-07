@@ -1,1 +1,0 @@
-categories = {"auth", "erq-auth", "erq-all"}

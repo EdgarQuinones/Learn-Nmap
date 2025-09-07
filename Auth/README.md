@@ -1,1 +1,0 @@
-# auth - Authentication testing
