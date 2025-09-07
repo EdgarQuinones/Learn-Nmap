@@ -1,9 +1,3 @@
-Got it ✅ I’ll rewrite your **README** so it clearly explains **how to install, run, and use your Learn-Nmap tool**, while keeping it clean and beginner-friendly. I’ll also make sure it highlights that the script **automates Nmap, uses AI (Ollama), and generates a full report with recommendations**.
-
-Here’s the improved README:
-
----
-
 # Learn Nmap
 
 A Python tool that leverages AI to make **Nmap scans smarter and more efficient**, generating detailed, actionable reports that explain findings and suggest next steps.
@@ -127,7 +121,3 @@ The goal is to reduce repetitive tasks and help penetration testers focus on wha
 
 Contributions, ideas, and bug reports are welcome.
 Please open an issue or submit a PR to help improve **Learn-Nmap**.
-
----
-
-👉 Do you want me to also add a **"Quick Workflow" diagram** (like ASCII art or markdown flow) to make it visually clear: `Input → Nmap → AI → Report`? That could make the README stand out.
