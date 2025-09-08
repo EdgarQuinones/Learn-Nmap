@@ -82,6 +82,8 @@ python3 Learn-Nmap.py 192.168.1.10
 python3 Learn-Nmap.py 192.168.1.0/24
 ```
 
+If no target is specified, the program will prompt for one interactively.
+
 After execution, the script will:
 
 * Run **Nmap** and save raw results.
@@ -125,7 +127,31 @@ The objective is to minimize repetitive tasks and enable penetration testers to 
 
 ---
 
+## Planned Update: v1.1.0 (Discovery)
+
+The next release will introduce a dedicated **host discovery module** (`Learn-Discover.py`) to extend scanning capabilities beyond simple live host detection.
+
+Key features planned for v1.1.0 include:
+
+* **Multiple Discovery Methods:** Support for TCP, UDP, ARP, and ICMP scanning.
+* **Consolidated Results:** Merge outputs from different discovery methods into a unified report.
+* **AI-Powered Interpretation:** Generate structured insights on:
+
+  * Domain names
+  * IP addresses
+  * Discovery method used
+  * Detected services and versions
+  * Operating system details
+* **Pre-Scan Guidance:** Interactive prompts to remind users about prerequisite OSINT and planning best practices.
+* **Educational Approach:** Emphasis on reconnaissance and data collection only, aligned with CEH scanning methodologies.
+
+The focus of this release is **information gathering and visualization**, preparing the ground for later modules on vulnerability detection, exploitation, and authentication.
+
+---
+
 ## Contributing
 
 Contributions, ideas, and bug reports are welcome.
 Please open an issue or submit a pull request to help improve **Learn-Nmap**.
+
+---
