@@ -16,6 +16,9 @@ xml_file = "output.xml"
 model = "llama3.1:8b"
 from prompt import prompt
 
+# Debug mode
+debug = False
+
 # Fancy boxed intro
 intro = (
     "="*60 + "\n" +
@@ -28,6 +31,9 @@ intro = (
 if len(sys.argv) == 2:
     print(intro)
     target = sys.argv[1]
+elif len(sys.argv) == 3 and sys.argv[2] == '-d':
+    print("Debug mode enabled.")
+    debug = True
 else:
     print("="*60)
     print(f"{RED}ERROR: Invalid arguments!{RESET}")
