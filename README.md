@@ -1,25 +1,70 @@
-# Learn-Nmap
+# Learn-Nmap v1.0.0
 
-**Learn-Nmap** is a Python tool that integrates **Nmap** with **AI-powered analysis**, making scans more efficient and generating actionable reports with recommended next steps.
+## Overview
+
+**Nmap** is one of the most widely used penetration testing tools, supporting:
+
+* Host discovery
+* Port scanning
+* Service detection
+* Vulnerability identification
+
+It has been a cornerstone of reconnaissance work for decades.
+
+**Learn-Nmap** builds on this foundation by combining **Nmap scanning** with **AI-powered reporting**. Instead of just running raw scans, it automates the process and generates **structured, actionable reports** with next-step recommendations.
+
+---
+
+## How Learn-Nmap Works
+
+The tool operates in **two stages**:
+
+### Stage 1 — Core Scanning
+
+* Identifies live hosts
+* Detects open ports and running services
+* Collects OS details
+* Saves raw scan results
+
+### Stage 2 — AI Interpretation
+
+* Uses **Ollama** with the `llama3.1:8b` model
+* Summarizes findings in plain English
+* Generates a structured `report.md`
+* Provides progressive Nmap recommendations (Level 1 → Level 4)
+
+This approach bridges the gap between manual scanning and automated analysis, making results easier to understand and apply.
 
 ---
 
 ## Features
 
-* **Flexible Target Input**
-  Accepts a host, IP range, or network.
+* **Flexible Target Input** — hostnames, IP ranges, or networks
+* **AI-Powered Analysis** — contextual recommendations for each service
+* **Actionable Reporting** — saves results in Markdown format
+* **Progressive Nmap Commands** — tailored for beginner to advanced testers
 
-* **Automated Nmap Scans**
-  Detects live hosts, open ports, and running services.
+---
 
-* **AI-Powered Analysis**
-  Uses Ollama with the `llama3.1:8b` model to interpret scan results.
+## System Requirements
 
-* **Progressive Recommendations**
-  Suggests Nmap commands at four levels of intrusion (from safe to exhaustive).
+Since Learn-Nmap integrates **AI inference**, system requirements vary depending on usage.
 
-* **Actionable Reporting**
-  Saves results to `report.md`, including summaries, recommended scripts, and follow-up tips.
+### Minimum (to run Nmap + AI locally)
+
+* **OS:** Linux (tested on Ubuntu/Debian)
+* **CPU:** Quad-core (x86\_64)
+* **RAM:** 8 GB
+* **Disk Space:** \~10 GB (Nmap, Ollama, and llama3.1:8b model \~4.7 GB)
+
+### Recommended (for smooth AI performance)
+
+* **CPU:** 6+ cores
+* **RAM:** 16 GB or more
+* **GPU (optional):** A CUDA-compatible GPU improves response times
+* **Disk Space:** 15 GB+
+
+💡 If your machine struggles with local inference, consider using a **smaller model** in Ollama or offloading AI analysis to a remote/paid API.
 
 ---
 
@@ -27,24 +72,26 @@
 
 ### Linux
 
-1. Clone the repository and enter the directory:
+1. Clone the repository:
 
    ```bash
    git clone <repo-url>
    cd learn-nmap
    ```
+
 2. Run the setup script:
 
    ```bash
    chmod +x setup.sh
    ./setup.sh
    ```
+
 This script will:
 
 * Install **Nmap**
 * Install **Ollama**
 * Start the Ollama service
-* Download the **llama3.1:8b** model (\~4.7 GB)
+* Download the `llama3.1:8b` model (\~4.7 GB)
 * Prepare the environment to run `Learn-Nmap.py`
 
 ---
@@ -64,13 +111,13 @@ python3 Learn-Nmap.py 192.168.1.10
 python3 Learn-Nmap.py 192.168.1.0/24
 ```
 
-If no target is specified, the program will prompt for one interactively.
+If no target is specified, the tool will prompt interactively.
 
-After execution, the script will:
+After execution, Learn-Nmap will:
 
-* Run **Nmap** and save raw results.
-* Use **AI** to generate a structured report (`report.md`).
-* Print a color-coded summary to the terminal.
+* Run **Nmap** and save raw results
+* Use **AI** to create `report.md`
+* Print a color-coded summary to the terminal
 
 ---
 
@@ -100,40 +147,41 @@ Tips for Next Scans:
 
 ---
 
-## Project Philosophy
+## Roadmap — v1.1.0 (DISCOVERY Update)
 
-**Learn-Nmap** bridges the gap between manual scanning and automated analysis.
-Rather than only running Nmap, it provides **AI-driven recommendations** tailored to each detected service.
+Target release: **September 29** (before CPTC)
 
-The objective is to minimize repetitive tasks and enable penetration testers to focus on interpreting results and taking action.
+Goals for the **Discovery module (`Learn-Discover.py`)**:
+
+* Automate host/service/port/OS scanning
+* Integrate additional Nmap discovery scripts
+* Merge results into structured reports
+* Add AI-powered summaries for:
+
+  * Domain names
+  * IPs
+  * Services & versions
+  * OS details
+* Provide **pre-scan guidance** (planning & OSINT reminders)
+* Focus strictly on **information gathering** (no exploitation)
 
 ---
 
-## Planned Update: v1.1.0 (Discovery)
+## Long-Term Stages
 
-The next release will introduce a dedicated **host discovery module** (`Learn-Discover.py`) to extend scanning capabilities beyond simple live host detection.
+The project roadmap follows a phased penetration testing workflow:
 
-Key features planned for v1.1.0 include:
+1. **Discovery**
+2. **Vulnerabilities**
+3. **Exploitation**
 
-* **Multiple Discovery Methods:** Support for TCP, UDP, ARP, and ICMP scanning.
-* **Consolidated Results:** Merge outputs from different discovery methods into a unified report.
-* **AI-Powered Interpretation:** Generate structured insights on:
-
-  * Domain names
-  * IP addresses
-  * Discovery method used
-  * Detected services and versions
-  * Operating system details
-* **Pre-Scan Guidance:** Interactive prompts to remind users about prerequisite OSINT and planning best practices.
-* **Educational Approach:** Emphasis on reconnaissance and data collection only, aligned with CEH scanning methodologies.
-
-The focus of this release is **information gathering and visualization**, preparing the ground for later modules on vulnerability detection, exploitation, and authentication.
+Each stage builds on the previous one, with AI support for both automation and interpretation.
 
 ---
 
 ## Contributing
 
-Contributions, ideas, and bug reports are welcome.
-Please open an issue or submit a pull request to help improve **Learn-Nmap**.
+Contributions are welcome!
 
----
+* Open an issue for bugs/ideas
+* Submit a pull request to improve functionality or documentation
