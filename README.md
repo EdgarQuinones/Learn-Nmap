@@ -39,25 +39,7 @@
    chmod +x setup.sh
    ./setup.sh
    ```
-
-### Windows
-
-* **Batch Script**
-
-  1. Save the script as `setup.bat`.
-  2. Right-click and select *Run as Administrator*.
-
-* **PowerShell**
-
-  1. Save the script as `setup.ps1`.
-  2. Open PowerShell as Administrator.
-  3. Run:
-
-     ```powershell
-     Set-ExecutionPolicy Bypass -Scope Process -Force; .\setup.ps1
-     ```
-
-These scripts will:
+This script will:
 
 * Install **Nmap**
 * Install **Ollama**
