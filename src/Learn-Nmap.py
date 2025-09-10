@@ -55,14 +55,26 @@ nmap_scan = subprocess.run(
 nmap_output = nmap_scan.stdout
 print("Generating report...\n")
 
+print(f"REPORT: {nmap_output}")
+
 # Track Olama report generation time
 start_time = time.time()
 
+stdout_model=None
+stderr_model=None
+
+verbose_model = "--verbose"
+
+prompt = "SUmmarize"
+
 ollama_data = subprocess.run(
     [
-        "ollama", "run", model,
+        "ollama", "run", 
+        model, verbose_model,
         f"{prompt} {nmap_output}"
     ],
+    # stdout=None,
+    # stderr=None,
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE,
     text=True
