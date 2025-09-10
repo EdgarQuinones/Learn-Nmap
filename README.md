@@ -50,23 +50,30 @@ This approach makes discovery more **efficient, repeatable, and educational**.
 
 ## System Requirements
 
-Since Learn-Nmap integrates **AI inference**, system requirements are heavier than standard Nmap use.
+Since **Learn-Nmap integrates AI inference** using **Mistral 7B Instruct**, system requirements are higher than standard Nmap usage.
 
-### Minimum (to run Nmap + AI locally)
+### Minimum
 
 * **OS:** Linux (tested on Ubuntu/Debian)
 * **CPU:** Quad-core (x86\_64)
-* **RAM:** 8 GB
-* **Disk Space:** \~10 GB (Nmap, AI runtime, and current model \~5 GB)
+* **RAM:** 8 GB — sufficient only for **quantized model** inference
+* **Disk Space:** \~10 GB (includes Nmap, AI runtime, and quantized model \~4–5 GB)
+* **Notes:** Inference may be slow without GPU acceleration
 
-### Recommended (for smooth AI performance)
+### Recommended
 
-* **CPU:** 6+ cores
-* **RAM:** 16 GB or more
-* **GPU (optional):** A CUDA-compatible GPU improves inference speed
-* **Disk Space:** 15 GB+
+* **CPU:** 6+ cores (faster inference and multitasking)
+* **RAM:** 16 GB or more — ensures full quantized model loads comfortably alongside Nmap
+* **GPU (optional):** CUDA-compatible GPU improves AI inference speed
+* **Disk Space:** 15 GB+ — allows multiple models and caching
 
-💡 If your system struggles with local inference, consider using a smaller AI model or offloading analysis to a remote/paid service in future versions.
+### Additional Notes
+
+* **Quantization:** Ollama automatically handles memory-efficient model formats, making it feasible to run Mistral 7B Instruct on 16 GB RAM
+* **Performance:** Without GPU, inference will be slower, but fully functional
+* **Compatibility:** Tested on Linux; other OS may require adjustments
+
+If your system struggles with local inference, consider using a smaller AI model or offloading analysis to a remote/paid service in future versions.
 
 ---
 
