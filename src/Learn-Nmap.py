@@ -13,7 +13,7 @@ RESET = "\033[0m"
 
 # Subprocess variables
 xml_file = "output.xml"
-model = "llama3.1:8b"
+model = "mistral:7b-instruct"
 from prompt import prompt
 
 # Debug mode

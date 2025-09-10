@@ -130,7 +130,7 @@ if command_exists ollama; then
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}Model downloaded successfully${NC}"
     else
-        echo -e "${RED}Failed to download model. Please run 'ollama pull llama3.1:8b' manually${NC}"
+        echo -e "${RED}Failed to download model. Please run 'ollama pull mistral:7b-instruct' manually${NC}"
     fi
 else
     echo -e "${RED}Ollama not found. Cannot pull model.${NC}"
