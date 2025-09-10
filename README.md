@@ -1,25 +1,72 @@
-# Learn-Nmap
+# Learn-Nmap v1.0.0
 
-**Learn-Nmap** is a Python tool that integrates **Nmap** with **AI-powered analysis**, making scans more efficient and generating actionable reports with recommended next steps.
+## Overview
+
+**Nmap** is one of the most widely used penetration testing tools, supporting:
+
+* Host discovery
+* Port scanning
+* Service detection
+* Vulnerability identification
+
+It remains a cornerstone of reconnaissance work for ethical hackers and penetration testers.
+
+**Learn-Nmap** enhances this workflow by combining **Nmap scanning** with **AI-powered reporting**. Instead of leaving results in raw scan outputs, the tool generates **structured reports** that summarize findings, highlight key details, and guide the next steps.
+
+---
+
+## How Learn-Nmap Works
+
+The tool operates in **two stages**:
+
+### Stage 1 — Core Scanning
+
+* Detects live hosts
+* Identifies open and closed ports
+* Collects operating system information
+* Identifies services and running processes
+* Detects system architecture details
+* Attempts to detect firewalls or other security devices
+* Saves raw results for later analysis
+
+### Stage 2 — AI Reporting
+
+* Interprets scan results into plain English
+* Structures findings into a `report.md` file
+* Highlights key discoveries across hosts, services, and systems
+* Includes potential vulnerabilities (when identifiable), though this is not the main focus until the **Vulnerability stage**
+
+This approach makes discovery more **efficient, repeatable, and educational**.
 
 ---
 
 ## Features
 
-* **Flexible Target Input**
-  Accepts a host, IP range, or network.
+* **Flexible Target Input** — accepts hostnames, IP ranges, or entire networks
+* **AI-Driven Reporting** — scan results transformed into structured, actionable reports
+* **Cross-Stage Alignment** — designed to evolve into future modules (Vulnerabilities, Exploitation)
 
-* **Automated Nmap Scans**
-  Detects live hosts, open ports, and running services.
+---
 
-* **AI-Powered Analysis**
-  Uses Ollama with the `llama3.1:8b` model to interpret scan results.
+## System Requirements
 
-* **Progressive Recommendations**
-  Suggests Nmap commands at four levels of intrusion (from safe to exhaustive).
+Since Learn-Nmap integrates **AI inference**, system requirements are heavier than standard Nmap use.
 
-* **Actionable Reporting**
-  Saves results to `report.md`, including summaries, recommended scripts, and follow-up tips.
+### Minimum (to run Nmap + AI locally)
+
+* **OS:** Linux (tested on Ubuntu/Debian)
+* **CPU:** Quad-core (x86\_64)
+* **RAM:** 8 GB
+* **Disk Space:** \~10 GB (Nmap, AI runtime, and current model \~5 GB)
+
+### Recommended (for smooth AI performance)
+
+* **CPU:** 6+ cores
+* **RAM:** 16 GB or more
+* **GPU (optional):** A CUDA-compatible GPU improves inference speed
+* **Disk Space:** 15 GB+
+
+💡 If your system struggles with local inference, consider using a smaller AI model or offloading analysis to a remote/paid service in future versions.
 
 ---
 
@@ -27,12 +74,13 @@
 
 ### Linux
 
-1. Clone the repository and enter the directory:
+1. Clone the repository:
 
    ```bash
    git clone <repo-url>
    cd learn-nmap
    ```
+
 2. Run the setup script:
 
    ```bash
@@ -40,29 +88,12 @@
    ./setup.sh
    ```
 
-### Windows
-
-* **Batch Script**
-
-  1. Save the script as `setup.bat`.
-  2. Right-click and select *Run as Administrator*.
-
-* **PowerShell**
-
-  1. Save the script as `setup.ps1`.
-  2. Open PowerShell as Administrator.
-  3. Run:
-
-     ```powershell
-     Set-ExecutionPolicy Bypass -Scope Process -Force; .\setup.ps1
-     ```
-
-These scripts will:
+This script will:
 
 * Install **Nmap**
-* Install **Ollama**
-* Start the Ollama service
-* Download the **llama3.1:8b** model (\~4.7 GB)
+* Install **AI runtime (Ollama)**
+* Start the required service
+* Download the default AI model (\~5 GB)
 * Prepare the environment to run `Learn-Nmap.py`
 
 ---
@@ -82,13 +113,13 @@ python3 Learn-Nmap.py 192.168.1.10
 python3 Learn-Nmap.py 192.168.1.0/24
 ```
 
-If no target is specified, the program will prompt for one interactively.
+If no target is specified, the tool will prompt interactively.
 
-After execution, the script will:
+After execution, Learn-Nmap will:
 
-* Run **Nmap** and save raw results.
-* Use **AI** to generate a structured report (`report.md`).
-* Print a color-coded summary to the terminal.
+* Run **Nmap** and save raw results
+* Use **AI** to create `report.md`
+* Print a structured summary to the terminal
 
 ---
 
@@ -97,61 +128,57 @@ After execution, the script will:
 ```
 Summary of Findings:
 - Host: 192.168.1.10
-- Open ports and associated services:
+- Open ports and services:
   - 22/tcp: SSH
   - 80/tcp: HTTP
   - 443/tcp: HTTPS
   - 139/tcp: SMB
   - 3306/tcp: MySQL
 
-Service-Specific Recommendations:
-Service: SSH on port 22
-- Level 1: nmap -p 22 192.168.1.10 — Basic port check
-- Level 2: nmap -sV -p 22 192.168.1.10 — Version detection
-- Level 3: nmap -sV --script=ssh-hostkey,ssh-auth-methods -p 22 192.168.1.10
-- Level 4: nmap -sV --script=ssh-brute,ssh-hostkey,ssh-auth-methods -p 22 192.168.1.10
-
-Tips for Next Scans:
-- Use `-oA` to save output in all formats.
-- Increase `-T` speed carefully based on stability.
+System Details:
+- Operating System: Linux (probable)
+- Architecture: x86_64
+- Firewall Detected: No
+- Running Processes: sshd, apache2, mysqld
 ```
 
 ---
 
-## Project Philosophy
+## Roadmap — v1.1.0 (DISCOVERY Update)
 
-**Learn-Nmap** bridges the gap between manual scanning and automated analysis.
-Rather than only running Nmap, it provides **AI-driven recommendations** tailored to each detected service.
+Target release: **September 29** (before CPTC)
 
-The objective is to minimize repetitive tasks and enable penetration testers to focus on interpreting results and taking action.
+The **Discovery stage** is the primary focus right now.
+According to ethical hacking methodology, the objectives of network scanning are:
+
+* Identify live hosts on a network
+* Identify open & closed ports
+* Identify operating system information
+* Identify services running on a network
+* Identify running processes on a network
+* Identify the presence of security devices (e.g., firewalls)
+* Identify system architecture
+* Identify vulnerabilities (if possible, though not the priority yet)
+
+These results will be **organized into reports**, forming the foundation for the next stages.
 
 ---
 
-## Planned Update: v1.1.0 (Discovery)
+## Long-Term Stages
 
-The next release will introduce a dedicated **host discovery module** (`Learn-Discover.py`) to extend scanning capabilities beyond simple live host detection.
+The project roadmap follows a phased penetration testing workflow:
 
-Key features planned for v1.1.0 include:
+1. **Discovery** (current focus)
+2. **Vulnerabilities** (deeper vulnerability detection and analysis)
+3. **Exploitation** (controlled testing of discovered weaknesses)
 
-* **Multiple Discovery Methods:** Support for TCP, UDP, ARP, and ICMP scanning.
-* **Consolidated Results:** Merge outputs from different discovery methods into a unified report.
-* **AI-Powered Interpretation:** Generate structured insights on:
-
-  * Domain names
-  * IP addresses
-  * Discovery method used
-  * Detected services and versions
-  * Operating system details
-* **Pre-Scan Guidance:** Interactive prompts to remind users about prerequisite OSINT and planning best practices.
-* **Educational Approach:** Emphasis on reconnaissance and data collection only, aligned with CEH scanning methodologies.
-
-The focus of this release is **information gathering and visualization**, preparing the ground for later modules on vulnerability detection, exploitation, and authentication.
+Each stage builds on the previous one, ensuring structure and clarity.
 
 ---
 
 ## Contributing
 
-Contributions, ideas, and bug reports are welcome.
-Please open an issue or submit a pull request to help improve **Learn-Nmap**.
+Contributions are welcome!
 
----
+* Open an issue for bugs/ideas
+* Submit a pull request to improve functionality or documentation
