@@ -9,6 +9,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
+model_name='mistral:7b-instruct'
 
 echo "=========================================="
 echo "    Learn-Nmap Setup Script for Linux     "
@@ -124,7 +125,7 @@ fi
 # ------------------------------
 # Pull Llama 3.1 8B Model
 # ------------------------------
-echo -e "\n${YELLOW}Pulling Llama 3.1 8B model (this may take a while)...${NC}"
+echo -e "\n${YELLOW}Pulling $model_name model (this may take a while)...${NC}"
 if command_exists ollama; then
     ollama pull llama3.1:8b
     if [ $? -eq 0 ]; then
