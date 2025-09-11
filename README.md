@@ -1,79 +1,72 @@
-# Learn-Nmap v1.0.0
+# ScanSentinel v1.0.0
 
 ## Overview
 
-**Nmap** is one of the most widely used penetration testing tools, supporting:
+**ScanSentinel** is a modern network discovery tool that combines traditional scanning techniques with **AI-powered reporting**. Unlike tools that only output raw scan results, ScanSentinel produces **structured reports**, highlights key findings, and guides the next steps in the network analysis workflow.
 
-* Host discovery
-* Port scanning
-* Service detection
-* Vulnerability identification
+It is designed to be both:
 
-It remains a cornerstone of reconnaissance work for ethical hackers and penetration testers.
-
-**Learn-Nmap** enhances this workflow by combining **Nmap scanning** with **AI-powered reporting**. Instead of leaving results in raw scan outputs, the tool generates **structured reports** that summarize findings, highlight key details, and guide the next steps.
+* **Educational** — teaching users how network scanning works
+* **Practical** — a tool that can be used for real discovery tasks
 
 ---
 
-## How Learn-Nmap Works
+## How ScanSentinel Works
 
 The tool operates in **two stages**:
 
-### Stage 1 — Core Scanning
+### Stage 1 — Core Discovery
 
-* Detects live hosts
+* Detects live hosts on a network
 * Identifies open and closed ports
-* Collects operating system information
-* Identifies services and running processes
-* Detects system architecture details
+* Collects operating system and architecture information
+* Detects services and running processes
 * Attempts to detect firewalls or other security devices
-* Saves raw results for later analysis
+* Saves raw results for further analysis
 
 ### Stage 2 — AI Reporting
 
-* Interprets scan results into plain English
+* Interprets scan results into clear, understandable language
 * Structures findings into a `report.md` file
 * Highlights key discoveries across hosts, services, and systems
-* Includes potential vulnerabilities (when identifiable), though this is not the main focus until the **Vulnerability stage**
+* Provides actionable insights for next steps (vulnerability detection and exploitation are planned for future stages)
 
-This approach makes discovery more **efficient, repeatable, and educational**.
+This approach makes network discovery more **efficient, repeatable, and educational**.
 
 ---
 
 ## Features
 
-* **Flexible Target Input** — accepts hostnames, IP ranges, or entire networks
-* **AI-Driven Reporting** — scan results transformed into structured, actionable reports
-* **Cross-Stage Alignment** — designed to evolve into future modules (Vulnerabilities, Exploitation)
+* **Flexible Target Input** — supports hostnames, IP ranges, or entire networks
+* **AI-Powered Reporting** — transforms raw scan results into structured, actionable reports
+* **Modular Design** — designed to expand into future stages like Vulnerability Analysis and Exploitation
 
 ---
 
 ## System Requirements
 
-Since **Learn-Nmap integrates AI inference** using **Mistral 7B Instruct**, system requirements are higher than standard Nmap usage.
+Since **ScanSentinel integrates AI inference** using **Mistral 7B Instruct**, system requirements are higher than standard scanning tools.
 
 ### Minimum
 
 * **OS:** Linux (tested on Ubuntu/Debian)
 * **CPU:** Quad-core (x86\_64)
-* **RAM:** 8 GB — sufficient only for **quantized model** inference
-* **Disk Space:** \~10 GB (includes Nmap, AI runtime, and quantized model \~4–5 GB)
-* **Notes:** Inference may be slow without GPU acceleration
+* **RAM:** 8 GB — sufficient for **quantized AI model** inference
+* **Disk Space:** \~10 GB (includes scanning tools, AI runtime, and model \~4–5 GB)
+* **Notes:** Inference may be slower without GPU acceleration
 
 ### Recommended
 
-* **CPU:** 6+ cores (faster inference and multitasking)
-* **RAM:** 16 GB or more — ensures full quantized model loads comfortably alongside Nmap
-* **GPU (optional):** CUDA-compatible GPU improves AI inference speed
-* **Disk Space:** 15 GB+ — allows multiple models and caching
+* **CPU:** 6+ cores for faster inference and multitasking
+* **RAM:** 16 GB or more
+* **GPU (optional):** CUDA-compatible GPU to speed up AI inference
+* **Disk Space:** 15 GB+ for multiple models and caching
 
-### Additional Notes
+**Additional Notes**
 
-* **Quantization:** Ollama automatically handles memory-efficient model formats, making it feasible to run Mistral 7B Instruct on 16 GB RAM
-* **Performance:** Without GPU, inference will be slower, but fully functional
-* **Compatibility:** Tested on Linux; other OS may require adjustments
-
-If your system struggles with local inference, consider using a smaller AI model or offloading analysis to a remote/paid service in future versions.
+* Ollama handles **memory-efficient quantized AI models**, making local inference feasible
+* Without GPU, AI reporting will be slower but fully functional
+* Tested on Linux; other OS may require adjustments
 
 ---
 
@@ -85,7 +78,7 @@ If your system struggles with local inference, consider using a smaller AI model
 
    ```bash
    git clone <repo-url>
-   cd learn-nmap
+   cd ScanSentinel
    ```
 
 2. Run the setup script:
@@ -97,11 +90,10 @@ If your system struggles with local inference, consider using a smaller AI model
 
 This script will:
 
-* Install **Nmap**
+* Install necessary scanning tools
 * Install **AI runtime (Ollama)**
-* Start the required service
 * Download the default AI model (\~5 GB)
-* Prepare the environment to run `Learn-Nmap.py`
+* Prepare the environment to run `ScanSentinel.py`
 
 ---
 
@@ -110,23 +102,23 @@ This script will:
 ### Run a Scan
 
 ```bash
-python3 Learn-Nmap.py <target>
+python3 ScanSentinel.py <target>
 ```
 
 Examples:
 
 ```bash
-python3 Learn-Nmap.py 192.168.1.10
-python3 Learn-Nmap.py 192.168.1.0/24
+python3 ScanSentinel.py 192.168.1.10
+python3 ScanSentinel.py 192.168.1.0/24
 ```
 
-If no target is specified, the tool will prompt interactively.
+If no target is specified, ScanSentinel will prompt interactively.
 
-After execution, Learn-Nmap will:
+After execution, ScanSentinel will:
 
-* Run **Nmap** and save raw results
-* Use **AI** to create `report.md`
-* Print a structured summary to the terminal
+* Run discovery scans and save raw results
+* Generate structured AI-driven `report.md`
+* Print a summary to the terminal
 
 ---
 
@@ -151,35 +143,30 @@ System Details:
 
 ---
 
-## Roadmap — v1.1.0 (DISCOVERY Update)
+## Roadmap — v1.1.0 (Discovery Focus)
 
-Target release: **September 29** (before CPTC)
+Target release: **September 29**
 
-The **Discovery stage** is the primary focus right now.
-According to ethical hacking methodology, the objectives of network scanning are:
+The **Discovery stage** is the primary focus:
 
-* Identify live hosts on a network
-* Identify open & closed ports
-* Identify operating system information
-* Identify services running on a network
-* Identify running processes on a network
-* Identify the presence of security devices (e.g., firewalls)
-* Identify system architecture
-* Identify vulnerabilities (if possible, though not the priority yet)
+* Identify live hosts
+* Map open and closed ports
+* Collect OS and system architecture info
+* Detect running services and processes
+* Identify security devices (firewalls, etc.)
+* Provide initial insights into potential vulnerabilities
 
-These results will be **organized into reports**, forming the foundation for the next stages.
+All findings will be **structured in reports**, forming the foundation for future stages.
 
 ---
 
 ## Long-Term Stages
 
-The project roadmap follows a phased penetration testing workflow:
+1. **Discovery** (current) — learn and map the network
+2. **Vulnerabilities** — detect and assess weaknesses
+3. **Exploitation** — controlled testing of discovered vulnerabilities
 
-1. **Discovery** (current focus)
-2. **Vulnerabilities** (deeper vulnerability detection and analysis)
-3. **Exploitation** (controlled testing of discovered weaknesses)
-
-Each stage builds on the previous one, ensuring structure and clarity.
+Each stage builds on the previous, maintaining **structure and clarity** for learning and real-world use.
 
 ---
 
@@ -187,5 +174,5 @@ Each stage builds on the previous one, ensuring structure and clarity.
 
 Contributions are welcome!
 
-* Open an issue for bugs/ideas
-* Submit a pull request to improve functionality or documentation
+* Open issues for bugs or ideas
+* Submit pull requests to improve functionality or documentation
