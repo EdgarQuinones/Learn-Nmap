@@ -158,18 +158,6 @@ The **Discovery stage** is the primary focus:
 
 All findings will be **structured in reports**, forming the foundation for future stages.
 
----
-
-## Long-Term Stages
-
-1. **Discovery** (current) — learn and map the network
-2. **Vulnerabilities** — detect and assess weaknesses
-3. **Exploitation** — controlled testing of discovered vulnerabilities
-
-Each stage builds on the previous, maintaining **structure and clarity** for learning and real-world use.
-
----
-
 ## Contributing
 
 Contributions are welcome!
